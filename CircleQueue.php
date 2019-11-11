@@ -147,5 +147,4 @@ $queue->push('safe');
 $queue->push('guard');
 $queue->push('angel');
 $queue->push('wing');
-//echo $i;
 $queue->dump();

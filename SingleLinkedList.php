@@ -48,6 +48,31 @@ class SingleLinkedList
     }
 
     /**
+     * 根据序号有序的插入节点
+     *
+     * @param HeroNode $node 节点
+     */
+    public function insertByNo(HeroNode $node)
+    {
+        $flag = 0;
+        $temp = $this->head;
+        while ($temp->next !== null) {
+            if ($temp->next->no > $node->no) {
+                $node->next = $temp->next;
+                $temp->next = $node;
+                $flag = 1;
+                break;
+            }
+            $temp = $temp->next;
+        }
+
+        if ($flag == 0) {
+            $temp->next = $node;
+        }
+
+    }
+
+    /**
      * 根据编号删除节点
      *
      * @param int $no 编号
@@ -100,6 +125,23 @@ class SingleLinkedList
         }
     }
 
+    public function mergeTwoLists(HeroNode $list1, HeroNode $list2)
+    {
+        $head = new HeroNode();
+        $temp = $head;
+        while ($list1 != null && $list2 != null) {
+            if ($list1->no < $list2->no) {
+                $temp->next = $list1;
+                $temp = $temp->next;
+                $list1 = $list1->next;
+            } else {
+                $temp->next = $list2;
+                $temp = $temp->next;
+                $list2 = $list2->next;
+            }
+        }
+    }
+
     /**
      * 反转链表
      *
@@ -119,6 +161,39 @@ class SingleLinkedList
 
         return $newLinkedList;
     }
+
+    /**
+     * 倒叙打印链表(使用栈实现)
+     * 实现思路:利用栈先入后出的原理,将链表的节点依次压入栈中,然后再依次出栈输出
+     */
+    public function reversePrintByStack()
+    {
+        $stack = array();
+        $temp = $this->head->next;
+        while ($temp !== null) {
+            array_push($stack, $temp);
+            $temp = $temp->next;
+        }
+
+        while (count($stack) > 0) {
+            echo array_pop($stack);
+        }
+    }
+
+    /**
+     * 倒叙打印链表(使用递归实现)
+     *
+     * @param object $head 链表的头
+     */
+    public function reversePrintByRecursion($head)
+    {
+        if ($head->next != null) {
+            $this->reversePrintByRecursion($head->next);
+        }
+
+        echo $head;
+    }
+
 
     /**
      * 对链表进行遍历输出
@@ -194,8 +269,11 @@ $link->insert(new HeroNode('宋江', '及时雨', 1));
 $link->insert(new HeroNode('卢俊义', '玉麒麟', 2));
 $link->insert(new HeroNode('吴用', '智多星', 3));
 $link->insert(new HeroNode('林冲', '豹子头', 4));
+$link->insertByNo(new HeroNode('晁盖', '托塔天王', 0));
+$link->insertByNo(new HeroNode('秦明', '霹雳火', 5));
+$link->show($link->head);
 //$link->update(1, new HeroNode('晁盖', '托塔天王', 1));
 //$link->delete(1);
-$a = $link->reverse();
-$link->show($a);
+//$a = $link->reverse();
+//$link->reversePrintByRecursion($link->head->next);
 //print_r($a);

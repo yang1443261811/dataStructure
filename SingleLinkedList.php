@@ -125,6 +125,13 @@ class SingleLinkedList
         }
     }
 
+    /**
+     * 合并两个有序链表,合并后链表依然是有序的
+     *
+     * @param HeroNode $list1
+     * @param HeroNode $list2
+     * @return mixed
+     */
     public function mergeTwoLists(HeroNode $list1, HeroNode $list2)
     {
         $head = new HeroNode();
@@ -140,6 +147,10 @@ class SingleLinkedList
                 $list2 = $list2->next;
             }
         }
+
+        $temp->next = $list1 == null ? $list2 : $list1;
+
+        return $temp;
     }
 
     /**

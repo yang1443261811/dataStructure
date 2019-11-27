@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * 双向链表
+ *
+ * Class DoubleLinkedList
+ */
 class DoubleLinkedList
 {
     public $head;

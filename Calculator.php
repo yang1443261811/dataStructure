@@ -77,7 +77,7 @@ class Calculator
 
         echo '计算结果是: ' . end($this->numberStack);
     }
-    
+
 
     /**
      * 给定一个运算符返回这个运算符的优先级

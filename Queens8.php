@@ -83,13 +83,14 @@ function select_sort(array &$data)
 
 function insert_sort(array $data)
 {
-    $arr = [];
+//    $arr = [];
+//    $a = implode()
 }
 
-$arr = [9, 0, 10, 2, 5, 20, 3, 4, 8, 9, 1, 4, 5];
-select_sort($arr);
-print_r($arr);
-
+//$arr = [9, 0, 10, 2, 5, 20, 3, 4, 8, 9, 1, 4, 5];
+//select_sort($arr);
+//print_r($arr);
+echo str_replace(' ', '%20', 'We Are Happy');
 
 //$queens = new Queens8();
 //$queens->exec();

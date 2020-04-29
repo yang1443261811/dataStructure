@@ -131,5 +131,6 @@ class Calculator
 $expression = '2*3+6/3-4';
 $calculator = new Calculator();
 $calculator->exec($expression);
+
 //print_r($calculator->operatorStack);
 //print_r($calculator->numberStack);

@@ -199,3 +199,4 @@ $hashTab->add(new Employee(10, '李应', '扑天雕'));
 print_r($hashTab->getById(1));
 //$hashTab->dump();
 //print_r($hashTab->container);
+#!/bin/bash

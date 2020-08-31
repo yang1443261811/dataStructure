@@ -124,8 +124,6 @@ class BinaryTree
         }
 
         return '';
-
-
     }
 
     public function isLeaf($root)

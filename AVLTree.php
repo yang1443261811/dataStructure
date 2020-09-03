@@ -62,11 +62,23 @@ class Node
 
         //当添加完节点后,右子树的高度与左子树的高度差大于1,就需要左旋转
         if ($this->rightHeight() - $this->leftHeight() > 1) {
+            //如果当前节点的右子树的左子树高度,大于它的右子树的右子树高度,则需要对当前节点的右子树进行右旋,以达到平衡
+            if ($this->right && $this->right->leftHeight() > $this->right->rightHeight()) {
+                $this->right->rightRotate();
+            }
+
             $this->leftRotate();
+
+            return;
         }
 
         //当添加完节点后,左子树的高度与右子树的高度差大于1,就需要右旋转
         if ($this->leftHeight() - $this->rightHeight() > 1) {
+            //如果当前节点左子树的右子树高度,大于它的左子树的左子树高度,则还需要对当前节点的左子树进行左旋,以达到平衡
+            if ($this->left && $this->left->rightHeight() > $this->left->leftHeight()) {
+                $this->left->leftRotate();
+            }
+
             $this->rightRotate();
         }
     }
@@ -370,7 +382,8 @@ class AVLTree
 
 $tree = new AVLTree();
 //$array = [4, 3, 6, 5, 7, 9];
-$array = [10, 8, 12, 7, 9, 6];
+//$array = [10, 8, 12, 7, 9, 6];
+$array = [10, 11, 7, 6, 8, 9];
 $root = '';
 foreach ($array as $value) {
     $node = new Node($value);
